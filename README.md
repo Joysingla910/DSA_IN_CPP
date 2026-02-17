@@ -1,4 +1,4 @@
-# projects_910
-this is my projects repository
+# DSA_IN_CPP 
+THIS REPO CONTAINS DSA CODES
 <br>
 author - JOY SINGLA
