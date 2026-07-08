@@ -1426,27 +1426,417 @@
 //     return ans;
 // }
 
+// #include<bits/stdc++.h> 
+// using namespace std;
+// int greaterele(int n , vector<int> &arr){
+//     for(int i = 0 ; i < n ; i++){
+//         int count = 0;
+//         for(int j = 0 ; j < n ; j++){
+//             if(arr[j] == arr[i]){
+//                 count++;
+//             }
+//         }
+//         if(count > n/2){
+//             return arr[i];
+//         }
+//     }
+//     return -1;
+// }
+// int main(){
+//     int n = 8;
+//     vector<int> arr ={1,2,3,4,4,4,4,4};
+//     cout <<  greaterele(n , arr);
+//     return 0;
+// }
 
 
+// #include<bits/stdc++.h> 
+// using namespace std;
+// vector<int> greaterele(int n , vector<int> &arr){
+//     unordered_map<int, int> mpp;
+//     for(int i=0 ; i < n ; i++){
+//         mpp[arr[i]]++;
+//     }
+//     for(auto it : mpp){
+//         if(it.second > n/2){
+//             return {it.first ,  it.second};
+//         }
+//     }
+//     return {-1,-1};
+// }
+// int main(){
+//     int n = 12;
+//     vector<int> arr ={1,2,3,3,3,4,4,3,3,3,3,3};
+//     vector<int> res = greaterele(n , arr);
+//     cout << res[0] << " occurs " << res[1] << " times";
+//     return 0;
+// }
+
+//moore voting algo
+// #include<bits/stdc++.h> 
+// using namespace std;
+// int greaterele(int n , vector<int> &arr){
+//     int ele ;
+//     int count = 0;
+//     for(int i = 0 ; i < n ; i++){
+//         if(count == 0){
+//             count = 1;
+//             ele = arr[i];
+//         }
+//         else if(arr[i] == ele){
+//             count++;
+//         }
+//         else{
+//             count--;
+//         }
+//     }
+//     int count1 = 0;
+//     for(int i = 0 ; i < n ; i++){
+//         if(arr[i] == ele){
+//             count1++;
+//         }
+//     }
+//     if(count1 > n/2){
+//         return ele;
+//     }
+// }
+// int main(){
+//     int n = 8;
+//     vector<int> arr ={1,2,3,4,4,4,4,4};
+//     cout <<  greaterele(n , arr);
+//     return 0;
+// }
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// int maximum(int n , vector<int> &arr){
+//     int maxi = INT_MIN;
+//     for(int i = 0 ;  i < n ; i++){
+//         int sum = 0;
+//         for(int j = i ; j < n ; j++){
+//             sum = sum  + arr[j];
+//             maxi = max(maxi , sum);
+//         }
+//     }
+//     return maxi;
+// }
+// int main(){
+//     int n = 6;
+//     vector<int> arr ={-2,3,1,4,-5,2};
+//     cout << maximum(n , arr);
+//     return 0;
+// }
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// int kadanes(int n , vector<int> &arr){
+//     int maxi = INT_MIN;
+//     int sum = 0;
+//     for(int i = 0 ; i < n ; i++){
+//         sum = sum + arr[i];
+//         maxi = max(maxi , sum);
+//         if(sum < 0){
+//             sum = 0;
+//         }
+//     }
+//     return maxi;
+// }
+// int main(){
+//     int n = 6;
+//     vector<int> arr ={-2,3,1,4,-5,2};
+//     cout << kadanes(n , arr);
+//     return 0;
+// }
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// vector<int> sort(int n , vector<int> &arr){
+//     sort(arr.begin() , arr.end());
+//     return arr;
+// }
+// int main(){
+//     int n = 9 ;
+//     vector<int> arr = {0,1,2,2,2,2,0,1,1};
+//     vector<int> res = sort(n , arr);
+//     for(auto it : res){
+//         cout << it << " ";
+//     }
+//     return 0;
+// }
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// vector<int> sort(int n , vector<int> &arr){
+//     int count0 = 0;
+//     int count1 = 0;
+//     int count2 = 0;
+//     for(int i = 0 ; i <n ; i++){
+//         if(arr[i] == 0){
+//             count0++;
+//         }
+//         else if(arr[i] == 1){
+//             count1++;
+//         }
+//         else{
+//             count2++;
+//         }
+//     }
+//     for(int i = 0 ; i < count0 ; i++){
+//         arr[i] = 0;
+//     }
+//     for(int i = count0 ; i < count0 + count1 ; i++){
+//         arr[i] = 1;
+//     }
+//     for(int i = count0 + count1 ; i < n ; i++){
+//         arr[i] = 2;
+//     }
+//     return arr;
+// }
+// int main(){
+//     int n = 9 ;
+//     vector<int> arr = {0,1,2,2,2,2,0,1,1};
+//     vector<int> res = sort(n , arr);
+//     for(auto it : res){
+//         cout << it << " ";
+//     }
+//     return 0;
+// }
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// vector<int> sort(int n , vector<int> &arr){
+//     int low = 0 ;
+//     int mid = 0 ;
+//     int high = n-1;
+//     while(mid <= high){
+//         if(arr[mid] == 0){
+//             swap(arr[mid] , arr[low]);
+//             low++;
+//             mid++;
+//         }
+//         else if(arr[mid] == 1){
+//             mid++;
+//         }
+//         else{
+//             swap(arr[mid] , arr[high]);
+//             high--;
+//         }
+//     }
+//     return arr;
+// }
+// int main(){
+//     int n = 12 ;
+//     vector<int> arr = {0,1,2,2,2,2,0,1,1,0,0,2};
+//     vector<int> res = sort(n , arr);
+//     for(auto it : res){
+//         cout << it << " ";
+//     }
+//     return 0;
+// }
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// int countsub(int n , vector<int> &arr , int k){
+//     int count= 0;
+//     for(int i = 0 ; i < n ; i++){
+//         int sum = 0;
+//         for(int j = i ; j < n ; j++){
+//             sum = sum + arr[j];
+//             if(sum == k){
+//             count++;
+//             }
+//         }
+//     }
+//     return count;
+// }
+// int main(){
+//     int n = 10;
+//     vector<int> arr = {1,2,3,-3,1,1,1,4,2,-3};
+//     int k = 3;
+//     cout << countsub(n , arr , k);
+//     return 0;
+// }
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// vector<int> leader(int n , vector<int> &arr){
+//     vector<int> leadarr;
+//     for(int i = 0 ; i < n ; i++){
+//         bool leader = true;
+//         for(int j = i + 1 ; j < n ; j++){
+//             if(arr[j] > arr[i]){
+//                 leader = false;
+//                 break;
+//             }
+//         }
+//         if(leader == true){
+//             leadarr.push_back(arr[i]);
+//         }
+//     }
+//     return leadarr;
+// }
+// int main(){
+//     int n = 6;
+//     vector<int> arr = {10,22,12,3,0,6};
+//     vector<int> res = leader(n , arr);
+//     for(auto it : res){
+//         cout << it << " ";
+//     }
+//     return 0;
+// }
+
+// #include<bits/stdc++.h>
+// using namespace std;
+// vector<int> leader(int n , vector<int> &arr){
+//     int maxi = INT_MIN;
+//     vector<int> ans;
+//     for(int i = n-1 ; i >=0 ; i--){
+//         if(arr[i] > maxi){
+//             ans.push_back(arr[i]);
+//             maxi = max(maxi , arr[i]);
+//         }
+//     }
+//     reverse(ans.begin() , ans.end());
+//     return ans;
+// }
+// int main(){
+//     int n = 6;
+//     vector<int> arr = {10,22,12,3,0,6};
+//     vector<int> res = leader(n , arr);
+//     for(auto it : res){
+//         cout << it << " ";
+//     }
+//     return 0;
+// }
 
 
+// #include<bits/stdc++.h>
+// using namespace std;
+// int greaterele(int n , vector<int> &arr){
+//     int ele;
+//     int count = 0;
+//     for(int i = 0 ; i < n ; i++){
+//         if(count == 0){
+//             count = 1;
+//             ele = arr[i];
+//         }
+//         else if(arr[i] == ele){
+//             count++;
+//         }
+//         else{
+//             count--;
+//         }
+//     }
+//     int count1 = 0;
+//     for(int i = 0 ; i < n ; i++){
+//         if(ele = arr[i]){
+//             count1++;
+//             if(count1 > n / 2){
+//                 return ele;
+//             }
+//         }
+//     }
+// }
+// int main(){
+//     int n = 8;
+//     vector<int> arr = {1,2,3,5,5,5,5,5};
+//     cout << greaterele(n , arr);
+//     return 0;
+// }
 
+// #include<bits/stdc++.h>
+// using namespace std;
+// vector<int> leader(int n , vector<int> &arr){
+//     vector<int> leadarr;
+   
+//     for(int i = 0 ; i < n ; i++){
+//         bool leader = true;
+//         for(int j = i+1 ; j < n ; j++){
+//             if(arr[j] > arr[i]){
+//                 leader = false;
+//                 break;
+//             }
+//         }
+//         if(leader == true){
+//             leadarr.push_back(arr[i]);
+//         }
+//     }
+//     return leadarr;
+// }
+// int main(){
+//     int n = 6;
+//     vector<int> arr = {16, 17, 4, 3, 5, 2};
+//     vector<int> res = leader(n ,arr);
+//     for(auto it : res){
+//         cout << it << " ";
+//     }
+//     return 0;
+// }
 
+// #include<bits/stdc++.h>
+// using namespace std;
+// vector<int> leader(int n , vector<int> &arr){
+//     vector<int> leadarr;
+//     int maxi = INT_MIN;
+//     for(int i = n-1 ; i >=0 ; i--){
+//         if(arr[i] > maxi){
+//             maxi = arr[i];
+//             leadarr.push_back(arr[i]);
+//         }
+//     }
+//     reverse(leadarr.begin() , leadarr.end());
+//     return leadarr;
+// }
+// int main(){
+//     int n = 6;
+//     vector<int> arr = {16, 17, 4, 3, 5, 2};
+//     vector<int> res = leader(n ,arr);
+//     for(auto it : res){
+//         cout << it << " ";
+//     }
+//     return 0;
+// }
 
+// #include<bits/stdc++.h>
+// using namespace std;
+// int maximumele(int n , vector<int> &arr){
+//     int maxi = INT_MIN;
+//     for(int i = 0 ; i < n ; i++){
+//         int sum = 0;
+//         for(int j = i ; j < n ; j++){
+//             sum = sum + arr[j];
+//             maxi = max(maxi , sum);
+//         }
+//     }
+//     return maxi;
+// }
+// int main(){
+//     int n = 8;
+//     vector<int> arr = {-2,-3,4,6,-1,-5,9,8};
+//     cout << maximumele(n , arr);
+//     return 0;
+// }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// #include<bits/stdc++.h>
+// using namespace std;
+// int maximumele(int n , vector<int> &arr){
+//     int sum = 0;
+//     int maxi = INT_MIN;
+//     for(int i = 0 ; i < n ; i++){
+//         sum = sum +arr[i];
+//         if(sum < 0){
+//             sum = 0;
+//         }
+//         maxi = max(sum , maxi);
+//     }
+//     return maxi;
+// }
+// int main(){
+//     int n = 8;
+//     vector<int> arr = {-2,-3,4,6,-1,-5,9,8};
+//     cout << maximumele(n , arr);
+//     return 0;
+// }
 
 
 
